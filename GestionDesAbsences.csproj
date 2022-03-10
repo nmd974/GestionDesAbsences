@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="DataAccess\" />
+    <Folder Include="Services\" />
+    <Folder Include="VueModels\" />
   </ItemGroup>
 
 </Project>
