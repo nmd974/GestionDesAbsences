@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GestionDesAbsencesv1.Models.Appartenir">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACABAAAAAAAAAAAAgIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Appartenir.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Promotion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Attendance">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAAAAAAAAIAAAAgAAAAAAAAAAQAIAgAAAAA=</HashCode>
+      <FileName>Models\Attendance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Seance" />
+      <Property Name="Proof" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Classroom">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classroom.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Seances" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Promotion">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Promotion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Appartenirs" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Proof">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACEAAAAAACAACAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Models\Proof.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Attendances" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Role">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.Seance">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <AssociationLine Name="Attendances" Type="GestionDesAbsencesv1.Models.Attendance">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.119" Y="0.185" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEAAAAAAAAAEAAAgAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Seance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Classroom" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Attendances" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GestionDesAbsencesv1.Models.User">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Appartenirs" Type="GestionDesAbsencesv1.Models.Appartenir">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.057" Y="0.227" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEKAAAAAAAAAEAAAAAgAAAAAABACAAAAAQAAAAg=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Attendances" />
+      <Property Name="Appartenirs" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
