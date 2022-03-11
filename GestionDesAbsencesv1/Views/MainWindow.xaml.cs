@@ -2,6 +2,7 @@
 using GestionDesAbsencesv1.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,14 +26,12 @@ namespace GestionDesAbsencesv1
         public MainWindow()
         {
             InitializeComponent();
-            var context = new AbsenceBddContext();
+            var roles = Db.Bdd.Roles;
 
-            context.Database.EnsureCreated();
-
-            Role role = new() { Label = "admin" };
-
-            context.Roles.Add(role);
-            context.SaveChanges();
+            foreach(var role in roles)
+            {
+                Debug.WriteLine(role.Label);
+            }
         }
     }
 }
