@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace GestionDesAbsences.Models
+namespace GestionDesAbsencesv1.Models
 {
-    public partial class User
+    #region Models
+    public class User
     {
-        public User()
-        {
-            Appartenirs = new HashSet<Appartenir>();
-            Attendances = new HashSet<Attendance>();
-        }
-
-        public long Id { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
-        public long RoleId { get; set; }
+        public int RoleId { get; set; }
 
         public virtual Role Role { get; set; }
         public virtual ICollection<Appartenir> Appartenirs { get; set; }
+            = new HashSet<Appartenir>();
         public virtual ICollection<Attendance> Attendances { get; set; }
+            = new HashSet<Attendance>();
     }
+    #endregion
 }
