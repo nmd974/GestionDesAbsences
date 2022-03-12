@@ -1,7 +1,6 @@
 ﻿using GestionDesAbsencesv1.Models;
 using GestionDesAbsencesv1.Service;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,53 +10,54 @@ using System.Threading.Tasks;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
-    class RoleViewModel
+    class ClassroomViewModel
     {
-        readonly DbSet<Role> DBROLE = Db.Bdd.Roles;
-        ObservableCollection<Role> _listRoles = new();
+        readonly DbSet<Classroom> DBCLASSROOM = Db.Bdd.Classrooms;
+        ObservableCollection<Classroom> _listClassroom = new();
 
-        public RoleViewModel()
+        public ClassroomViewModel()
         {
             Index();
         }
 
-        public ObservableCollection<Role> ListRoles
+        public ObservableCollection<Classroom> ListClassroom
         {
             get
             {
-                return _listRoles;
+                return _listClassroom;
             }
             set
             {
-                _listRoles = value;
+                _listClassroom = value;
             }
         }
 
         void Index()
         {
-            foreach(Role role in DBROLE)
+            foreach (Classroom Class in DBCLASSROOM)
             {
-                _listRoles.Add(role);
+                _listClassroom.Add(Class);
             }
         }
 
         public void Store(string label)
         {
-            Role NewRole = new() { Label = label };
+            Classroom NewClass = new() { Label = label };
 
-            DBROLE.Add(NewRole);
+            DBCLASSROOM.Add(NewClass);
             Db.Bdd.SaveChanges();
         }
 
         public void Update()
         {
-            Db.Bdd.SaveChanges();
+            _ = Db.Bdd.SaveChanges();
         }
 
-        public void Delete(Role role)
+        public void Delete(Classroom Class)
         {
-            DBROLE.Remove(role);
-            Db.Bdd.SaveChanges();
+            DBCLASSROOM.Remove(Class);
+            _ = Db.Bdd.SaveChanges();
         }
+
     }
 }

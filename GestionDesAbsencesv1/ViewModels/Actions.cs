@@ -8,7 +8,7 @@ namespace GestionDesAbsencesv1.ViewModels
 {
     class Actions
     {
-        static DataContextViewModel _viewModel = new();
+        readonly static DataContextViewModel _viewModel = new();
 
         public static DataContextViewModel ViewModel
         {

@@ -24,6 +24,7 @@ namespace GestionDesAbsencesv1
     /// </summary>
     public partial class MainWindow : Window
     {
+        readonly DataContextViewModel db = Actions.ViewModel;
         public MainWindow()
         {
             InitializeComponent();

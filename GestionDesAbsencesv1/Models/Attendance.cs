@@ -10,7 +10,7 @@ namespace GestionDesAbsencesv1.Models
     public class Attendance
     {
         public bool Late { get; set; }
-        public float MissingType { get; set; }
+        public double MissingType { get; set; }
         public int UserId { get; set; }
         public int SeanceId { get; set; }
         public int? ProofId { get; set; }

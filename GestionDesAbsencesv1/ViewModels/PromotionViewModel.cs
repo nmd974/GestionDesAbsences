@@ -1,7 +1,6 @@
 ﻿using GestionDesAbsencesv1.Models;
 using GestionDesAbsencesv1.Service;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,41 +10,41 @@ using System.Threading.Tasks;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
-    class RoleViewModel
+    class PromotionViewModel
     {
-        readonly DbSet<Role> DBROLE = Db.Bdd.Roles;
-        ObservableCollection<Role> _listRoles = new();
+        readonly DbSet<Promotion> DBPROMOTION = Db.Bdd.Promotions;
+        ObservableCollection<Promotion> _listPromotion = new();
 
-        public RoleViewModel()
+        public PromotionViewModel()
         {
             Index();
         }
 
-        public ObservableCollection<Role> ListRoles
+        public ObservableCollection<Promotion> ListPromotion
         {
             get
             {
-                return _listRoles;
+                return _listPromotion;
             }
             set
             {
-                _listRoles = value;
+                _listPromotion = value;
             }
         }
 
         void Index()
         {
-            foreach(Role role in DBROLE)
+            foreach (Promotion promotion in DBPROMOTION)
             {
-                _listRoles.Add(role);
+                _listPromotion.Add(promotion);
             }
         }
 
         public void Store(string label)
         {
-            Role NewRole = new() { Label = label };
+            Promotion NewPromotion = new() { Label = label };
 
-            DBROLE.Add(NewRole);
+            DBPROMOTION.Add(NewPromotion);
             Db.Bdd.SaveChanges();
         }
 
@@ -54,9 +53,9 @@ namespace GestionDesAbsencesv1.ViewModels
             Db.Bdd.SaveChanges();
         }
 
-        public void Delete(Role role)
+        public void Delete(Promotion promotion)
         {
-            DBROLE.Remove(role);
+            DBPROMOTION.Remove(promotion);
             Db.Bdd.SaveChanges();
         }
     }
