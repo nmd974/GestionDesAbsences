@@ -1,7 +1,8 @@
-﻿using GestionDesAbsencesv1.Models;
-using GestionDesAbsencesv1.Service;
+﻿using GestionDesAbsencesv1.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,10 @@ namespace GestionDesAbsencesv1
         public MainWindow()
         {
             InitializeComponent();
-            var roles = Db.Bdd.Roles;
 
-            foreach(var role in roles)
+            foreach (var role in Actions.ViewModel.Roles.ListRoles)
             {
-                Debug.WriteLine(role.Label);
+                Debug.WriteLine($"Mon Id = {role.RoleId} et mon label = {role.Label}");
             }
         }
     }
