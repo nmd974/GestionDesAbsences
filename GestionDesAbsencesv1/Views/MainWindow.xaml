@@ -5,20 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionDesAbsencesv1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Not Here v1.0.0" Height="1024" Width="1440"
+        WindowState="Maximized"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="#04153B"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <StackPanel>
-            <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
-            </materialDesign:Card>
+        <StackPanel VerticalAlignment="Center">
+            <!-- Logo -->
+            <Image HorizontalAlignment="Center" Height="200"  VerticalAlignment="Center" Width="200" Source="/Views/logo.png"/>
+
+            <!-- Input Mail -->
+            <TextBox
+                  Background="White"
+                  Width="400"
+                  x:Name="NameTextBox"
+                  materialDesign:HintAssist.Hint="Email"
+                  materialDesign:HintAssist.HelperText="Helper text longer than error" Cursor="IBeam" BorderThickness="0,0,0,4" Padding="8,5,5,5" RenderTransformOrigin="1,0" Margin="0,0,0,10">
+                <TextBox.Text>
+                    <Binding
+                        Path="Email"
+                        UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <!-- Input Password -->
+            <TextBox
+                  Background="White"
+                  Visibility="Hidden"
+                  Width="200"
+                  x:Name="PasswordTextBox"
+                  materialDesign:HintAssist.Hint="Password"
+                  materialDesign:HintAssist.HelperText="Helper text longer than error" Cursor="IBeam" BorderThickness="0,0,0,4" Padding="8,5,5,5" RenderTransformOrigin="1,0" Margin="0,0,0,-5">
+                <TextBox.Text>
+                    <Binding
+                        Path="Name"
+                        UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <!-- Button confirm -->
+            <Button
+              x:Name="ButtonLogin"
+              Style="{StaticResource MaterialDesignRaisedButton}"
+              materialDesign:ButtonProgressAssist.Value="-1"
+              materialDesign:ButtonProgressAssist.IsIndicatorVisible="False"
+              materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+              Background="#393E47"
+              Margin="15"
+              
+              Width="100"
+              ToolTip="Verifier que votre compte existe"
+              Content="VERIFIER"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Foreground="White" Cursor="Hand" Click="Button_Click" />
+
         </StackPanel>
+        <StackPanel VerticalAlignment="Bottom">
+            <Label Content="Application Not Here V1.0.0 - Groupe 2" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" FontSize="16" Margin="0,0,0,20" />
+        </StackPanel>
+
     </Grid>
 </Window>

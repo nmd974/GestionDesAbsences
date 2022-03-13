@@ -34,5 +34,10 @@ namespace GestionDesAbsencesv1
                 Debug.WriteLine($"Mon Id = {role.RoleId} et mon label = {role.Label}");
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MaterialDesignThemes.Wpf.ButtonProgressAssist.SetIsIndicatorVisible(ButtonLogin, true);
+        }
     }
 }
