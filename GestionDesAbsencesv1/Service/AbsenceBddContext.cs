@@ -1,4 +1,5 @@
 ﻿using GestionDesAbsencesv1.Models;
+using GestionDesAbsencesv1.ViewModels;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -51,8 +52,8 @@ namespace GestionDesAbsencesv1.Service
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {
-                var sqliteConn = new SqliteConnection(@"DataSource = Absences.db");
+            {        
+                var sqliteConn = new SqliteConnection(@""+Db.Config.GetConnection("ContextDatabase"));
                 optionsBuilder.UseSqlite(sqliteConn);
             }
         }

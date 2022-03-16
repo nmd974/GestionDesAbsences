@@ -1,4 +1,5 @@
-﻿using GestionDesAbsencesv1.ViewModels;
+﻿using GestionDesAbsencesv1.Models;
+using GestionDesAbsencesv1.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace GestionDesAbsencesv1
             {
                 Debug.WriteLine($"Mon Id = {role.RoleId} et mon label = {role.Label}");
             }
+
+            db.User.MailLogin(db.User.ListUsers.First());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
