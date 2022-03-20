@@ -1,0 +1,113 @@
+﻿<Page x:Class="GestionDesAbsencesv1.Views.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestionDesAbsencesv1.Views"
+      xmlns:vm="clr-namespace:GestionDesAbsencesv1.Service"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" d:DesignWidth="1440"
+        Title="Login"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="#04153B"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+      >
+    <Grid>
+    <StackPanel VerticalAlignment="Center">
+        <!-- Logo -->
+        <Image 
+                HorizontalAlignment="Center" 
+                Height="200"  
+                VerticalAlignment="Center" 
+                Width="200" 
+                Source="/Views/logo.png"/>
+
+        <!-- Label Password -->
+        <Label 
+                x:Name="labelPassword" 
+                Content="Nous venons de vous envoyer un mail avec un code pin pour vous connecter" 
+                Visibility="Hidden" 
+                HorizontalAlignment="Center" 
+                Foreground="#DDFFF1F1" 
+                FontWeight="Normal" />
+
+        <!-- input mail -->
+        <TextBox
+                Background="White"
+                Width="400"
+                x:Name="idLoginText"
+                materialDesign:HintAssist.Hint="Email"
+                materialDesign:HintAssist.HelperText="Merci de saisir votre identifiant" 
+                Cursor="IBeam" 
+                BorderThickness="0,0,0,4" 
+                Padding="8,5,5,5" 
+                RenderTransformOrigin="1,0" 
+                Margin="0,0,0,10" 
+                TextAlignment="Center">
+            <TextBox.Text>
+                <Binding
+                        Path="LoginId"
+                        UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <vm:EmailRules ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <!-- Input Password -->
+            <PasswordBox
+                PasswordChanged="PasswordTextBox_PasswordChanged"   
+                Background="White"
+                Visibility="Hidden"
+                MaxLength="6"
+                Width="200"
+                x:Name="PasswordTextBox"
+                materialDesign:HintAssist.Hint="Password"
+                materialDesign:HintAssist.HelperText="Merci de saisir votre password" 
+                Cursor="IBeam" 
+                BorderThickness="0,0,0,4" 
+                Padding="8,5,5,5" 
+                RenderTransformOrigin="1,0" 
+                Margin="0,0,0,-5" />
+
+
+            <!-- Button confirm -->
+        <Button
+              x:Name="ButtonLogin"
+              materialDesign:ButtonProgressAssist.Value="-1"
+              materialDesign:ButtonProgressAssist.IsIndicatorVisible="False"
+              materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+              Background="#FF55585D"
+              Margin="15" 
+              Width="100"
+              Content="VERIFIER"
+              Foreground="White"
+              Cursor="Hand"
+              Click="Button_Click" 
+              FontWeight="Normal" 
+              >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=idLoginText, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+    </StackPanel>
+    </Grid>
+
+</Page>

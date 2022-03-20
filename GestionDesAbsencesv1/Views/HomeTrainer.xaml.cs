@@ -1,9 +1,5 @@
-﻿using GestionDesAbsencesv1.Views;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestionDesAbsencesv1
+namespace GestionDesAbsencesv1.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour HomeTrainer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomeTrainer : Page
     {
-        public static Frame Frame { get; set; }
-        public MainWindow()
+        public HomeTrainer()
         {
             InitializeComponent();
-            frame.Content = new Login();
-            Frame = frame;
         }
-
     }
 }
