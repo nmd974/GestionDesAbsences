@@ -28,19 +28,79 @@ namespace GestionDesAbsencesv1
         readonly DataContextViewModel db = Actions.ViewModel;
         public MainWindow()
         {
+            this.DataContext = Actions.ViewModel.Login;
             InitializeComponent();
-
-            foreach (var role in Actions.ViewModel.Roles.ListRoles)
-            {
-                Debug.WriteLine($"Mon Id = {role.RoleId} et mon label = {role.Label}");
-            }
-
-            db.User.MailLogin(db.User.ListUsers.First());
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MaterialDesignThemes.Wpf.ButtonProgressAssist.SetIsIndicatorVisible(ButtonLogin, true);
+
+            if (ButtonLogin.Content.ToString() == "VALIDER")
+            {
+                Login();
+            }
+            else
+            {
+                ProcessLoginEmail();
+            }
+
+            MaterialDesignThemes.Wpf.ButtonProgressAssist.SetIsIndicatorVisible(ButtonLogin, false);
         }
+
+
+        void ProcessLoginEmail()
+        {
+            if (db.Login.VerifyLoginIdExist(idLoginText.Text.ToLower().Trim()))
+            {
+                PasswordTextBox.Visibility = Visibility.Visible;
+                idLoginText.IsEnabled = false;
+                labelPassword.Visibility = Visibility.Visible;
+                ButtonLogin.Content = "VALIDER";
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Merci de vérifier votre identifiant ou de contacteur l'admin par mail admin@nothere.re"
+                );
+            }
+        }
+        void Login()
+        {
+            if(PasswordTextBox.Password.Length < 4)
+            {
+                MessageBox.Show(
+                    "Merci de vérifier le nombre charatère de votre code");
+                return;
+            } else if (!IsValid(PasswordTextBox.Password))
+            {
+                MessageBox.Show(
+                   "Votre saisie n'est pas un code pin");
+                return;
+            } else if (!db.Login.Login(PasswordTextBox.Password.Trim()))
+            {
+                MessageBox.Show(
+                "Votre code pin est invalide");
+                return;
+            }
+
+            MessageBox.Show(
+                "Félicitation, login réussi");
+        }
+        static bool IsValid(string number)
+        {
+            try
+            {
+                int nb = Int32.Parse(number);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
     }
 }

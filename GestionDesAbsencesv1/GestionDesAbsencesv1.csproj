@@ -23,4 +23,8 @@
     <Resource Include="Views\logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Form\" />
+  </ItemGroup>
+
 </Project>

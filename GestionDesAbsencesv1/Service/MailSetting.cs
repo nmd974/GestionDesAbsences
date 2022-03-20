@@ -13,7 +13,7 @@ namespace GestionDesAbsencesv1.Service
     class MailSetting
     {
         readonly SmtpClient _client = new(Db.Config.getConfig("MailSettings", "Smtp"));
-        MailMessage _mail;
+        static MailMessage _mail;
         public MailSetting(Mail mail)
         {
            _mail = new MailMessage(mail.MailOf, mail.MailTo, mail.Object, mail.Message);   
@@ -30,7 +30,7 @@ namespace GestionDesAbsencesv1.Service
 
         public void SendMail()
         {
-            _client.Send(_mail);
+            _client.SendAsync(_mail, null);
         }
     }
 }

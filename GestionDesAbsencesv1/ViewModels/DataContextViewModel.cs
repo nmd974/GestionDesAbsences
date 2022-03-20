@@ -22,6 +22,15 @@ namespace GestionDesAbsencesv1.ViewModels
         readonly ProofViewModel _proof = new();
         readonly SeanceViewModel _seance = new();
         readonly AttencdanceViewModel _attendance = new();
+        readonly LoginViewModel _login = new();
+
+        public LoginViewModel Login
+        {
+            get
+            {
+                return _login;
+            }
+        }
 
         public RoleViewModel Roles
         {

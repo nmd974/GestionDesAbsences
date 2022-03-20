@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionDesAbsencesv1"
+        xmlns:vm="clr-namespace:GestionDesAbsencesv1.Service"
         mc:Ignorable="d"
         Title="Not Here v1.0.0" Height="1024" Width="1440"
         WindowState="Maximized"
@@ -18,63 +19,101 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <!-- Logo -->
-            <Image HorizontalAlignment="Center" Height="200"  VerticalAlignment="Center" Width="200" Source="/Views/logo.png"/>
+            <Image 
+                HorizontalAlignment="Center" 
+                Height="200"  
+                VerticalAlignment="Center" 
+                Width="200" 
+                Source="/Views/logo.png"/>
 
-            <!-- Input Mail -->
+            <!-- Label Password -->
+            <Label 
+                x:Name="labelPassword" 
+                Content="Nous venons de vous envoyer un mail avec un code pin pour vous connecter" 
+                Visibility="Hidden" 
+                HorizontalAlignment="Center" 
+                Foreground="#DDFFF1F1" 
+                FontWeight="Normal" />
+
+            <!-- input mail -->
             <TextBox
-                  Background="White"
-                  Width="400"
-                  x:Name="NameTextBox"
-                  materialDesign:HintAssist.Hint="Email"
-                  materialDesign:HintAssist.HelperText="Helper text longer than error" Cursor="IBeam" BorderThickness="0,0,0,4" Padding="8,5,5,5" RenderTransformOrigin="1,0" Margin="0,0,0,10">
+                Background="White"
+                Width="400"
+                x:Name="idLoginText"
+                materialDesign:HintAssist.Hint="Email"
+                materialDesign:HintAssist.HelperText="Merci de saisir votre identifiant" 
+                Cursor="IBeam" 
+                BorderThickness="0,0,0,4" 
+                Padding="8,5,5,5" 
+                RenderTransformOrigin="1,0" 
+                Margin="0,0,0,10" 
+                TextAlignment="Center">
                 <TextBox.Text>
                     <Binding
-                        Path="Email"
+                        Path="LoginId"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-
+                            <vm:EmailRules ValidatesOnTargetUpdated="True" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
 
             <!-- Input Password -->
-            <TextBox
-                  Background="White"
-                  Visibility="Hidden"
-                  Width="200"
-                  x:Name="PasswordTextBox"
-                  materialDesign:HintAssist.Hint="Password"
-                  materialDesign:HintAssist.HelperText="Helper text longer than error" Cursor="IBeam" BorderThickness="0,0,0,4" Padding="8,5,5,5" RenderTransformOrigin="1,0" Margin="0,0,0,-5">
-                <TextBox.Text>
-                    <Binding
-                        Path="Name"
-                        UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <PasswordBox
+                Background="White"
+                Visibility="Hidden"
+                MaxLength="6"
+                Width="200"
+                x:Name="PasswordTextBox"
+                materialDesign:HintAssist.Hint="Password"
+                materialDesign:HintAssist.HelperText="Merci de saisir votre password" 
+                Cursor="IBeam" 
+                BorderThickness="0,0,0,4" 
+                Padding="8,5,5,5" 
+                RenderTransformOrigin="1,0" 
+                Margin="0,0,0,-5">
+            </PasswordBox>
 
             <!-- Button confirm -->
             <Button
               x:Name="ButtonLogin"
-              Style="{StaticResource MaterialDesignRaisedButton}"
               materialDesign:ButtonProgressAssist.Value="-1"
               materialDesign:ButtonProgressAssist.IsIndicatorVisible="False"
               materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-              Background="#393E47"
-              Margin="15"
-              
+              Background="#FF55585D"
+              Margin="15" 
               Width="100"
-              ToolTip="Verifier que votre compte existe"
               Content="VERIFIER"
-              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Foreground="White" Cursor="Hand" Click="Button_Click" />
+              Foreground="White"
+              Cursor="Hand"
+              Click="Button_Click" 
+              FontWeight="Normal" 
+              >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=idLoginText, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
         </StackPanel>
+        
         <StackPanel VerticalAlignment="Bottom">
-            <Label Content="Application Not Here V1.0.0 - Groupe 2" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" FontSize="16" Margin="0,0,0,20" />
+            <Label 
+                Content="Application Not Here V1.0.0 - Groupe 2" 
+                Foreground="#DDFFFFFF" 
+                HorizontalContentAlignment="Center" 
+                FontSize="16" 
+                Margin="0,0,0,20" />
         </StackPanel>
 
     </Grid>
