@@ -1,4 +1,7 @@
-﻿using GestionDesAbsencesv1.Views;
+﻿using GestionDesAbsencesv1.Models;
+using GestionDesAbsencesv1.Service;
+using GestionDesAbsencesv1.ViewModels;
+using GestionDesAbsencesv1.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +30,8 @@ namespace GestionDesAbsencesv1
         public static Frame Frame { get; set; }
         public MainWindow()
         {
+            Db.Bdd.Database.EnsureCreated();
+            //Db.Seed();
             InitializeComponent();
             frame.Content = new Login();
             Frame = frame;

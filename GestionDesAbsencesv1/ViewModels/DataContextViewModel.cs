@@ -14,15 +14,15 @@ namespace GestionDesAbsencesv1.ViewModels
             Db.Bdd.Database.EnsureCreated();
         }
 
-        readonly RoleViewModel _roles = new();
-        readonly PromotionViewModel _promotion = new();
-        readonly UserViewModel _user = new();
-        readonly AppartenirViewModel _appartenir = new();
-        readonly ClassroomViewModel _classroom = new();
-        readonly ProofViewModel _proof = new();
-        readonly SeanceViewModel _seance = new();
-        readonly AttencdanceViewModel _attendance = new();
-        readonly LoginViewModel _login = new();
+        RoleViewModel _roles = new();
+        PromotionViewModel _promotion = new();
+        UserViewModel _user = new();
+        AppartenirViewModel _appartenir = new();
+        ClassroomViewModel _classroom = new();
+        ProofViewModel _proof = new();
+        SeanceViewModel _seance = new();
+        AttencdanceViewModel _attendance = new();
+        LoginViewModel _login = new();
 
         public LoginViewModel Login
         {

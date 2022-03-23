@@ -30,7 +30,7 @@
         <!-- Label Password -->
         <Label 
                 x:Name="labelPassword" 
-                Content="Nous venons de vous envoyer un mail avec un code pin pour vous connecter" 
+                Content="Un Mail vient de vous être envoyé avec le code pour vous connecter" 
                 Visibility="Hidden" 
                 HorizontalAlignment="Center" 
                 Foreground="#DDFFF1F1" 

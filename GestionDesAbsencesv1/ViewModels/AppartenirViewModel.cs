@@ -30,10 +30,10 @@ namespace GestionDesAbsencesv1.ViewModels
 
         public void Store(int userId, int promotionId)
         {
-            Appartenir NewAppartenir = new() 
+            Appartenir NewAppartenir = new()
             {
                 UserId = userId,
-                PromotionId = promotionId
+                PromotionId = promotionId,
             };
 
             DBAPPARTENIR.Add(NewAppartenir);

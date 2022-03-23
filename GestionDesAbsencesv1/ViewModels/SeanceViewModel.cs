@@ -40,12 +40,11 @@ namespace GestionDesAbsencesv1.ViewModels
             }
         }
 
-        public void Store(int classroomId, int seanceId, string label, string dateTime)
+        public void Store(int classroomId, string label, string dateTime)
         {
             Seance NewSeance = new() 
             {
                 ClassroomId = classroomId,
-                SeanceId = seanceId,
                 Label = label,
                 Datetime = dateTime
             };

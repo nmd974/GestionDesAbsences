@@ -53,6 +53,12 @@ namespace GestionDesAbsencesv1.ViewModels
             Db.Bdd.SaveChanges();
         }
 
+        public void Proof(Attendance attendance, int proofId)
+        {
+            attendance.ProofId = proofId;
+            Update();
+        }
+
         public void Update()
         {
             Db.Bdd.SaveChanges();

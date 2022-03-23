@@ -30,7 +30,7 @@ namespace GestionDesAbsencesv1.ViewModels
         {
             Random rand = new();
             int codePin = rand.Next(1000, 9999);
-            user.Password = codePin.ToString();
+            user.Password = Passwords.Encrypt(codePin.ToString());
             Actions.ViewModel.User.Update();
         }
 
@@ -85,7 +85,7 @@ namespace GestionDesAbsencesv1.ViewModels
                         <p>Bonjour {user.FirstName} {user.LastName},</p>
                         <p>Merci pour votre demande, nous avons le plaisir de vous partager 
                            votre code pin pour accéder à votre application : <p>
-                        <p> <strong> {user.Password} </strong> </p>
+                        <p> <strong> {Passwords.Decrypt(user.Password)} </strong> </p>
                         <p> Pour toutes questions techniques, merci de contacter 
                             l'administrateur : admin@nothere.re </p>
                         <p> Bien cordialement, </p>
@@ -144,7 +144,7 @@ namespace GestionDesAbsencesv1.ViewModels
             {
                 return false;
             }
-            else if(_password != _user.Password)
+            else if(_password != Passwords.Decrypt(_user.Password))
             {
                 return false;
             }
