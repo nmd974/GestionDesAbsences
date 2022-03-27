@@ -17,16 +17,23 @@
         Background="#04153B"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <Frame NavigationUIVisibility="Hidden" x:Name="frame" VerticalAlignment="Center"/>
+        <Frame 
+            NavigationUIVisibility="Hidden" 
+            x:Name="frame" 
+            VerticalAlignment="center"/>
 
-        <StackPanel VerticalAlignment="Bottom">
+        <StackPanel 
+            VerticalAlignment="Bottom" 
+            Height="64" 
+            Margin="0,20,0,0">
             <Label 
                 Content="Application Not Here V1.0.0 - Groupe 2" 
                 Foreground="#DDFFFFFF" 
                 HorizontalContentAlignment="Center" 
                 FontSize="16" 
-                Margin="0,0,0,20" />
+                Margin="0,20,0,0" 
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch" />
         </StackPanel>
-
     </Grid>
 </Window>

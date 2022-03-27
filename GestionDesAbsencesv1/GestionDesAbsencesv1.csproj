@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <None Remove="Assets\logo.png" />
-    <None Remove="Views\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,11 +24,6 @@
     <Resource Include="Assets\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Views\logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Form\" />
   </ItemGroup>
 
 </Project>

@@ -30,7 +30,7 @@ namespace GestionDesAbsencesv1.Factories
                 {        
                     int nbrEleve = Eleves.Count;
                     User Eleve = (User)Eleves[rand.Next(nbrEleve)];
-                    List<double> absence = new() { 0.5, 1 };
+                    List<double> absence = new() {0, 0.5, 1 };
 
                     Eleves.Remove(Eleve);
 
@@ -38,7 +38,7 @@ namespace GestionDesAbsencesv1.Factories
                         seance.SeanceId,
                         Eleve.UserId,
                         Faker.Boolean.Random(),
-                        absence[rand.Next(0,1)]);
+                        absence[rand.Next(0,2)]);
                 }
               
                 Array AttendanceStudent = Db.Bdd.Attendances.Where(c => c.SeanceId == seance.SeanceId).Where(d => d.User.Role.Label == "étudiant").ToArray();

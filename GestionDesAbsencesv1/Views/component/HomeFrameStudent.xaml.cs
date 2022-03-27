@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionDesAbsencesv1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestionDesAbsencesv1.Views
+namespace GestionDesAbsencesv1.Views.component
 {
     /// <summary>
-    /// Logique d'interaction pour HomeAdmin.xaml
+    /// Logique d'interaction pour HomeFrameStudent.xaml
     /// </summary>
-    public partial class HomeAdmin : Page
+    public partial class HomeFrameStudent : Page
     {
-        public HomeAdmin()
+        public HomeFrameStudent()
         {
             InitializeComponent();
+            DataContext = Actions.ViewModel.Student;
         }
     }
 }

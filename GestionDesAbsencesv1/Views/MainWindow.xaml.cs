@@ -35,6 +35,9 @@ namespace GestionDesAbsencesv1
             InitializeComponent();
             frame.Content = new Login();
             Frame = frame;
+
+            //Random test = new Random();
+            //DateTime dateTime = new(2022, test.Next(1, 12), test.Next(1, 28));
         }
 
     }

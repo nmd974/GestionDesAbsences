@@ -23,6 +23,15 @@ namespace GestionDesAbsencesv1.ViewModels
         SeanceViewModel _seance = new();
         AttencdanceViewModel _attendance = new();
         LoginViewModel _login = new();
+        StudentViewModel _student = new();
+
+        public StudentViewModel Student
+        {
+            get
+            {
+                return _student;
+            }
+        }
 
         public LoginViewModel Login
         {

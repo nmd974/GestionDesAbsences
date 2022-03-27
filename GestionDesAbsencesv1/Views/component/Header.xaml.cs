@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionDesAbsencesv1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestionDesAbsencesv1.Views
+namespace GestionDesAbsencesv1.Views.component
 {
     /// <summary>
-    /// Logique d'interaction pour HomeSecretary.xaml
+    /// Logique d'interaction pour Header.xaml
     /// </summary>
-    public partial class HomeSecretary : Page
+    public partial class Header : Page
     {
-        public HomeSecretary()
+        readonly LoginViewModel db = Actions.ViewModel.Login;
+        public Header()
         {
+            this.DataContext = db;
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Actions.ViewModel.Login.Logout();
         }
     }
 }

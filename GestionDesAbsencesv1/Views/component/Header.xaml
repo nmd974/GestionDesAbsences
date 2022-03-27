@@ -1,0 +1,87 @@
+﻿<Page x:Class="GestionDesAbsencesv1.Views.component.Header"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestionDesAbsencesv1.Views.component"
+      d:DesignHeight="150" d:DesignWidth="1440"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="#04153B"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+      mc:Ignorable="d" 
+      Title="Header">
+
+    <DockPanel  HorizontalAlignment="Stretch">
+        <!-- Logo -->
+        <Image 
+            HorizontalAlignment="Left" 
+            Height="149" 
+            Width="129" 
+            Source="/Assets/logo.png" 
+            Margin="60,0,0,0" 
+            VerticalAlignment="Stretch"/>
+
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Right" 
+            Margin="0,0,30,0" 
+            VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" >
+                <!-- button logout -->
+                <Button 
+                    Background="red" 
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                    Click="Button_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                            Kind="Logout"
+                            Height="24"
+                            Width="24" />
+                            <Label 
+                                Foreground="#DDFFFFFF" 
+                                FontWeight="Bold" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center" 
+                                Margin="10,0,0,0" 
+                                FontSize="16" 
+                                >LOGOUT
+                            </Label>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Label 
+                    Content="{Binding FullName}"
+                    Foreground="#DDFFF4F4" 
+                    FontWeight="Bold" 
+                    FontSize="20" 
+                    HorizontalAlignment="Right" 
+                    BorderThickness="0,5,0,0" />
+            </StackPanel>
+            <Button
+              Style="{StaticResource MaterialDesignIconButton}"
+              ToolTip="icon"
+              Height="80"
+              Width="80"
+              IsEnabled="False" 
+              Foreground="White" 
+              Cursor="Hand" 
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              FlowDirection="RightToLeft" 
+              Padding="0,4,0,4" 
+              Margin="20,0,0,0">
+                <materialDesign:PackIcon 
+                    Width="79"
+                    Height="80" 
+                    Kind="Account" 
+                    HorizontalAlignment="Center" />
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</Page>

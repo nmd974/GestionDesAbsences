@@ -1,6 +1,7 @@
 ﻿using GestionDesAbsencesv1.Models;
 using GestionDesAbsencesv1.Service;
 using GestionDesAbsencesv1.Views;
+using GestionDesAbsencesv1.Views.component;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,8 @@ namespace GestionDesAbsencesv1.ViewModels
 
         public string LoginId { get => _loginId; set => OnPropertyChanged(ref _loginId, value); }
         public string Password { get => _password; set => OnPropertyChanged(ref _password, value); }
+        public string FullName { get => $"{_user.FirstName + " " + _user.LastName.ToUpper()}"; }
+        public User UserConnected { get => _user; }
 
         /// <summary>
         ///  Configure le code pin à inserer dans le mail pour envoi
@@ -32,6 +35,16 @@ namespace GestionDesAbsencesv1.ViewModels
             int codePin = rand.Next(1000, 9999);
             user.Password = Passwords.Encrypt(codePin.ToString());
             Actions.ViewModel.User.Update();
+        }
+
+        public void Logout()
+        {
+            _loginId = null;
+            _password = null;
+            _user = null;
+
+            MainWindow.Frame.Content = new Login();
+            MainWindow.Frame.VerticalAlignment = VerticalAlignment.Center;
         }
 
         /// <summary>
@@ -177,17 +190,20 @@ namespace GestionDesAbsencesv1.ViewModels
         {
             switch (_user.Role.Label.ToLower())
             {
-                case "élève":
-                    MainWindow.Frame.Content = new HomeStudent();
+                case "étudiant":
+                    Actions.ViewModel.Student.UserConnected = _user;
+                    MainWindow.Frame.Content = new LayoutHome();
+                    LayoutHome.BtnList.ItemsSource = ButtonsViewModel.ListButtonsHomeStudent;
+                    LayoutHome.HomeFrame.Content = new HomeFrameStudent();
                     break;
                 case "formateur":
-                    MainWindow.Frame.Content = new HomeTrainer();
+                    MainWindow.Frame.Content = new LayoutHome();
                     break;
                 case "secrétaire":
-                    MainWindow.Frame.Content = new HomeSecretary();
+                    MainWindow.Frame.Content = new LayoutHome();
                     break;
                 case "admin":
-                    MainWindow.Frame.Content = new HomeAdmin();
+                    MainWindow.Frame.Content = new LayoutHome();
                     break;
                 default:
                     MessageBox.Show(
@@ -197,6 +213,8 @@ namespace GestionDesAbsencesv1.ViewModels
                     MessageBoxImage.Error);
                     break;
             }
+            
+            MainWindow.Frame.VerticalAlignment = VerticalAlignment.Top;
         }
 
         /// <summary>

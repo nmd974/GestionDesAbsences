@@ -16,13 +16,17 @@ using System.Windows.Shapes;
 namespace GestionDesAbsencesv1.Views
 {
     /// <summary>
-    /// Logique d'interaction pour HomeTrainer.xaml
+    /// Logique d'interaction pour LayoutHome.xaml
     /// </summary>
-    public partial class HomeTrainer : Page
+    public partial class LayoutHome : Page
     {
-        public HomeTrainer()
-        {
+        static public ListBox BtnList { get; set; }
+        public static Frame HomeFrame { get; set; }
+        public LayoutHome()
+        { 
             InitializeComponent();
+            BtnList = ListButtonsHome;
+            HomeFrame = homeFrame;
         }
     }
 }
