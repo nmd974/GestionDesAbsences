@@ -13,10 +13,14 @@ namespace GestionDesAbsencesv1.Factories
     {
         public AppartenirFactory()
         {
-            foreach(User user in Db.Bdd.Users.Where(c => c.Role.Label == "étudiant").ToArray())
+            Random rand = new();
+            foreach (User user in Db.Bdd.Users.Where(c => c.Role.Label == "étudiant").ToArray())
             {
-                int promotion = Faker.RandomNumber.Next(1,10);
-                Actions.ViewModel.Appartenir.Store(user.UserId, promotion);
+                List<Promotion> listPromo = Db.Bdd.Promotions.ToList();
+                Promotion LastPromo = listPromo.OrderBy(c => c.PromotionId).Last();
+                int RandomPromoId = rand.Next(1, LastPromo.PromotionId);
+                
+                Actions.ViewModel.Appartenir.Store(user.UserId, RandomPromoId);
             }
         }
     }

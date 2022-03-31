@@ -31,13 +31,10 @@ namespace GestionDesAbsencesv1
         public MainWindow()
         {
             Db.Bdd.Database.EnsureCreated();
-            //Db.Seed();
+            Db.Seed();
             InitializeComponent();
             frame.Content = new Login();
             Frame = frame;
-
-            //Random test = new Random();
-            //DateTime dateTime = new(2022, test.Next(1, 12), test.Next(1, 28));
         }
 
     }

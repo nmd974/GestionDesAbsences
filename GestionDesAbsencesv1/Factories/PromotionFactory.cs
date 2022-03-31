@@ -13,7 +13,7 @@ namespace GestionDesAbsencesv1.Factories
         {
             for(int x = 0; x <= number; x++)
             {
-                Actions.ViewModel.Promotion.Store(Faker.Address.City());
+                Actions.ViewModel.Promotion.Store($"promotion {x}");
             }
         }
     }

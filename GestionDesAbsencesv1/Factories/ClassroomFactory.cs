@@ -13,7 +13,7 @@ namespace GestionDesAbsencesv1.Factories
         {
             for (int x = 0; x <= number; x++)
             {
-                Actions.ViewModel.Classroom.Store("classe " + x);
+                Actions.ViewModel.Classroom.Store($"classe {x}");
             }
         }
     }
