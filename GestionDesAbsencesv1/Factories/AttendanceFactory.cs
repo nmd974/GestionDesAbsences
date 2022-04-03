@@ -15,11 +15,11 @@ namespace GestionDesAbsencesv1.Factories
         {
             Random rand = new();
             List<Attendance> listAttendances = Db.Bdd.Attendances.Where(c => c.User.Role.Label == "étudiant").ToList();
-            double[] missing = new double[3] { 0, 0.5, 1 }; 
+            double[] missing = new double[4] { 0, 0.5, 1.0, 1 }; 
 
             foreach(Attendance attends in listAttendances)
             {
-                attends.MissingType = missing[rand.Next(0, 2)];
+                attends.MissingType = missing[rand.Next(0, 3)];
                 attends.Late = Faker.Boolean.Random();
                 Actions.ViewModel.Attencdance.Update();
             }

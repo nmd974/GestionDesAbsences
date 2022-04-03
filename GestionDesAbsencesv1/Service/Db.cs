@@ -15,17 +15,20 @@ namespace GestionDesAbsencesv1.Service
 
         public static void Seed()
         {
-            new RoleFactory();
-            new PromotionFactory(3);
-            new ClassroomFactory(5); 
-            new UserFactory(40, "étudiant");
-            new UserFactory(2, "admin");
-            new UserFactory(5, "formateur");
-            new UserFactory(2, "secrétaire");
-            new AppartenirFactory();
-            new SeanceFactory(30);
-            new AttendanceFactory();
-            new ProofFactory(10);
+            if (Bdd.Users.ToList().Count() == 0)
+            {
+                new RoleFactory();
+                new PromotionFactory(3);
+                new ClassroomFactory(5);
+                new UserFactory(40, "étudiant");
+                new UserFactory(2, "admin");
+                new UserFactory(5, "formateur");
+                new UserFactory(2, "secrétaire");
+                new AppartenirFactory();
+                new SeanceFactory(30);
+                new AttendanceFactory();
+                new ProofFactory(10);
+            }
         }
     }
 }

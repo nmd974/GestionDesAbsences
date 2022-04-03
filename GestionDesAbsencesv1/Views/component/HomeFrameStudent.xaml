@@ -33,7 +33,7 @@
                 </StackPanel>
             </Button>
             <Button 
-                Style="{StaticResource MaterialDesignFlatDarkButton}">
+                Style="{StaticResource MaterialDesignFlatDarkButton}" Click="Button_Click_1">
                 <StackPanel 
                     Orientation="Horizontal">
                     <materialDesign:PackIcon 
@@ -66,6 +66,7 @@
                     Background="White" 
                     Margin="10,0,10,0">
                     <DatePicker
+                      SelectedDate="{Binding Path=DateStart, Mode=TwoWay }"
                       Width="140"
                       materialDesign:HintAssist.Hint="Date Debut"
                       Foreground="Black"
@@ -73,6 +74,7 @@
                 </StackPanel>
                 <StackPanel Background="White" Margin="10,0,10,0">
                     <DatePicker
+                      SelectedDate="{Binding Path=DateEnd, Mode=TwoWay }"
                       Width="140"
                       materialDesign:HintAssist.Hint="Date Debut"
                       Foreground="Black"
@@ -84,7 +86,7 @@
                 Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                Margin="0,20,0,10" />
+                Margin="0,20,0,10" Click="Button_Click" Cursor="Hand" />
         </StackPanel>
 
         <StackPanel 
@@ -100,10 +102,13 @@
                 VerticalAlignment="Center">
                 <ProgressBar
                     Orientation="Vertical"
-                    Value="20"
+                    Minimum="0"
+                    Maximum="100"
+                    Name="GraphTxAbsent"
                     Margin="10"
                     Height="50" 
                     Width="200" 
+                    Foreground="Red"
                     Background="Green" />
                 <StackPanel 
                     VerticalAlignment="Center" 
@@ -135,6 +140,22 @@
                         FontSize="48" 
                         HorizontalContentAlignment="Center" 
                         VerticalContentAlignment="Center" />
+                    <Label 
+                        Foreground="White" 
+                        Margin="10" 
+                        Content="Taux d'absentéisme" 
+                        FontWeight="Bold" 
+                        FontSize="18" 
+                        HorizontalAlignment="Center" />
+                    <Label 
+                        Foreground="White" 
+                        Content="{Binding AbsenteeismRate}" 
+                        FontWeight="Bold" 
+                        FontSize="48" 
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
             <StackPanel 
@@ -153,13 +174,29 @@
                     <Label 
                         Foreground="White" 
                         Margin="10" 
-                        Content="Taux d'absentéisme" 
+                        Content="Nombre Absence Justiée :" 
                         FontWeight="Bold" 
                         FontSize="18" 
                         HorizontalAlignment="Center" />
                     <Label 
                         Foreground="White" 
-                        Content="{Binding AbsenteeismRate}" 
+                        Content="{Binding AbsenceJustified.Count}" 
+                        FontWeight="Bold" 
+                        FontSize="48" 
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" />
+                    <Label 
+                        Foreground="White" 
+                        Margin="10" 
+                        Content="Nombre Absence Non-Justiée :" 
+                        FontWeight="Bold" 
+                        FontSize="18" 
+                        HorizontalAlignment="Center" />
+                    <Label 
+                        Foreground="White" 
+                        Content="{Binding AbsenceNotJustified.Count}" 
                         FontWeight="Bold" 
                         FontSize="48" 
                         HorizontalContentAlignment="Center"

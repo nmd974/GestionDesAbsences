@@ -21,10 +21,24 @@ namespace GestionDesAbsencesv1.Views.component
     /// </summary>
     public partial class HomeFrameStudent : Page
     {
+        public static HomeFrameStudent frameStudent;
         public HomeFrameStudent()
         {
             InitializeComponent();
+            Actions.ViewModel.Student.StartHomeStudent();
             DataContext = Actions.ViewModel.Student;
+            GraphTxAbsent.Value = Actions.ViewModel.Student.TxAbsent; 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Actions.ViewModel.Student.FilterDataDate();
+            GraphTxAbsent.Value = Actions.ViewModel.Student.TxAbsent;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Actions.ViewModel.Student.GeneratePdf();
         }
     }
 }
