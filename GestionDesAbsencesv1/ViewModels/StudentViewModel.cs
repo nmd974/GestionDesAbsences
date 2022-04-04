@@ -163,7 +163,10 @@ namespace GestionDesAbsencesv1.ViewModels
 
         void SetListAbsenceNotJustified()
         {
-            AbsenceNotJustified = _userAttendance.Where(c => c.Proof != null && c.Proof.Justify == false || c.Proof == null).ToList();
+            AbsenceNotJustified = _userAttendance
+                .Where(x=> x.MissingType > 0 )
+                .Where(c => c.Proof != null && c.Proof.Justify == false || c.Proof == null)
+                .ToList();
         }
 
         double GetAbsenteeismRate()
