@@ -12,6 +12,12 @@
     <Grid>
         <ComboBox ItemsSource="{Binding Path=ListPromotion}" DisplayMemberPath="Label" SelectedValuePath="PromotionId" SelectedValue="{Binding Path=PromotionId}" HorizontalAlignment="Left" Margin="288,118,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="318,175,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-
+        <DataGrid x:Name="DG1" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Margin="200,225,288,56" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Present?"  />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

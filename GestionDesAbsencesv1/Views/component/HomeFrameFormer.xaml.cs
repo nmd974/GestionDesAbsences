@@ -32,7 +32,7 @@ namespace GestionDesAbsencesv1.Views.component
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var test = Actions.ViewModel.Promotion.getPromotionsStudents();
+            DG1.ItemsSource = Actions.ViewModel.Promotion.getPromotionsStudents();
         }
     }
 }
