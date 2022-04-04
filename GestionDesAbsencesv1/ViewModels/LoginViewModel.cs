@@ -197,7 +197,9 @@ namespace GestionDesAbsencesv1.ViewModels
                     LayoutHome.HomeFrame.Content = new HomeFrameStudent();
                     break;
                 case "formateur":
+                    Actions.ViewModel.Student.UserConnected = _user;
                     MainWindow.Frame.Content = new LayoutHome();
+                    LayoutHome.BtnList.ItemsSource = ButtonsViewModel.ListButtonsHomeStudent;
                     break;
                 case "secrétaire":
                     MainWindow.Frame.Content = new LayoutHome();

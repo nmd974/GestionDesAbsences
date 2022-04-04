@@ -14,7 +14,14 @@ namespace GestionDesAbsencesv1.ViewModels
     {
         readonly DbSet<Promotion> DBPROMOTION = Db.Bdd.Promotions;
         ObservableCollection<Promotion> _listPromotion = new();
-
+        string _idPromotion;
+        public string PromotionId
+        {
+            set
+            {
+                _idPromotion = value;
+            }
+        }
         public PromotionViewModel()
         {
             Index();
@@ -58,5 +65,23 @@ namespace GestionDesAbsencesv1.ViewModels
             DBPROMOTION.Remove(promotion);
             Db.Bdd.SaveChanges();
         }
+
+        /// <summary>
+        ///  Retourne la liste des étudiants dans la promotion selectionnée
+        ///  /// <param name="_idPromotion"></param>
+        /// </summary>
+        public List<User> getPromotionsStudents()
+        {
+            var result = Db.Bdd.Appartenirs
+           .Where(a => a.PromotionId == Int32.Parse(_idPromotion))
+           .Select(s => new User
+           {
+               FirstName = s.User.FirstName,
+               LastName = s.User.LastName,
+           })
+           .ToList();
+            return result;
+        }
+
     }
 }

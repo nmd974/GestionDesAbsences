@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
-    class AppartenirViewModel
+    class AppartenirViewModel : ObservableObject
     {
         readonly DbSet<Appartenir> DBAPPARTENIR = Db.Bdd.Appartenirs;
         ObservableCollection<Appartenir> _listAppartenir = new();
@@ -50,6 +50,7 @@ namespace GestionDesAbsencesv1.ViewModels
             DBAPPARTENIR.Remove(app);
             Db.Bdd.SaveChanges();
         }
+
 
     }
 }
