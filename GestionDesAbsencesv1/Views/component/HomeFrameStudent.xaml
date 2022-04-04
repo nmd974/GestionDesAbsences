@@ -98,8 +98,8 @@
                 Orientation="Horizontal" 
                 Margin="20" 
                 Background="#FF04153B" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center">
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch">
                 <ProgressBar
                     Orientation="Vertical"
                     Minimum="0"
@@ -111,42 +111,42 @@
                     Foreground="Red"
                     Background="Green" />
                 <StackPanel 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Stretch" 
+                    HorizontalAlignment="Stretch" 
                     Margin="10">
                     <Label 
                         Foreground="White" 
                         Margin="10" 
                         Content="Nombre de jour absent" 
                         FontWeight="Bold" 
-                        FontSize="18" />
+                        FontSize="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Content="{Binding NumbersDaysAbsence}" 
                         FontWeight="Bold" 
                         FontSize="48" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" />
+                        HorizontalContentAlignment="Stretch" 
+                        VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Margin="10" 
                         Content="Sur" 
                         FontWeight="Bold" 
-                        FontSize="18" />
+                        FontSize="18" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Content="{Binding NumberTrainingDays}" 
                         FontWeight="Bold" 
                         FontSize="48" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" />
+                        HorizontalContentAlignment="Stretch" 
+                        VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Margin="10" 
                         Content="Taux d'absentéisme" 
                         FontWeight="Bold" 
                         FontSize="18" 
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Content="{Binding AbsenteeismRate}" 
@@ -164,10 +164,10 @@
                 Orientation="Horizontal" 
                 Margin="20" 
                 Background="#FF04153B" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center">
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch">
                 <StackPanel 
-                    VerticalAlignment="Center" 
+                    VerticalAlignment="Stretch" 
                     HorizontalAlignment="Stretch" 
                     Margin="10" 
                     Width="280">
@@ -177,7 +177,7 @@
                         Content="Nombre Absence Justiée :" 
                         FontWeight="Bold" 
                         FontSize="18" 
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Content="{Binding AbsenceJustified.Count}" 
@@ -193,7 +193,7 @@
                         Content="Nombre Absence Non-Justiée :" 
                         FontWeight="Bold" 
                         FontSize="18" 
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
                     <Label 
                         Foreground="White" 
                         Content="{Binding AbsenceNotJustified.Count}" 

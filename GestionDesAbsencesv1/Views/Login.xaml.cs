@@ -46,7 +46,7 @@ namespace GestionDesAbsencesv1.Views
 
         private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            db.Password = PasswordTextBox.Password;
+            //db.Password = PasswordTextBox.Password;
         }
     }
 }

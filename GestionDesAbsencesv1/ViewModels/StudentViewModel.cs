@@ -292,7 +292,7 @@ namespace GestionDesAbsencesv1.ViewModels
 
         }
         
-        public void AddCellToTab(string str, Font f, BaseColor c, PdfPTable t)
+        static void AddCellToTab(string str, Font f, BaseColor c, PdfPTable t)
         {
             PdfPCell cell = new(new Phrase(str, f));
             cell.BackgroundColor = c;
