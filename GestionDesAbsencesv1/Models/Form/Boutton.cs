@@ -70,7 +70,7 @@ namespace GestionDesAbsencesv1.Models.Form
 
         void ChangePage() 
         {
-            LayoutHome.HomeFrame.Content = new Login();
+            LayoutHome.HomeFrame.Content = _page;
         }
 
     }
