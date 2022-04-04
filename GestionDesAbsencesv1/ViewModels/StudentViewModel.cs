@@ -11,6 +11,7 @@ using iTextSharp.text.pdf;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Shapes;
+using GestionDesAbsencesv1.Service;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
@@ -137,6 +138,8 @@ namespace GestionDesAbsencesv1.ViewModels
                 OnPropertyChanged(nameof(NumberTrainingDays)); 
             }
         }
+
+        public string ExecutablePath { get; private set; }
 
         void SetListAttendance()
         {
@@ -287,12 +290,31 @@ namespace GestionDesAbsencesv1.ViewModels
                     AddCellToTab(info, fontSubTh, white, table);
                 }
             }
-
             doc.Add(table);
 
-            doc.Close();
-            Process.Start(@"cmd.exe ", @"/c " + outfile);
+            Paragraph p5 = new("\n");
+            doc.Add(p5);
 
+            //tableau
+            PdfPTable table2 = new(4);
+            table2.WidthPercentage = 100;
+
+            //cell tab 
+            AddCellToTab("nombre de jour de formation", fontTh, blue, table2);
+            AddCellToTab("nombre de jour d'absence", fontTh, blue, table2);
+            AddCellToTab("nombre d'absence justifié", fontTh, blue, table2);
+            AddCellToTab("nombre d'absence non justifié", fontTh, blue, table2);
+            AddCellToTab(_numberTrainingDays.ToString(), fontSubTh, white, table2);
+            AddCellToTab(_numbersDaysAbsence.ToString(), fontSubTh, white, table2);
+            AddCellToTab(_absenceJustified.Count.ToString(), fontSubTh, white, table2);
+            AddCellToTab(_absenceNotJustified.Count.ToString(), fontSubTh, white, table2);
+
+            doc.Add(table2);
+
+            doc.Close();
+            
+            Process.Start(@"cmd.exe ", @"/c " + outfile);
+            
         }
         
         static void AddCellToTab(string str, Font f, BaseColor c, PdfPTable t)
