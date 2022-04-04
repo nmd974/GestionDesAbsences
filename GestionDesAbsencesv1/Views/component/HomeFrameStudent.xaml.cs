@@ -38,7 +38,12 @@ namespace GestionDesAbsencesv1.Views.component
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Actions.ViewModel.Student.GeneratePdf();
+            Actions.ViewModel.Student.ExportPdf();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Actions.ViewModel.Student.PrintPdf();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GestionDesAbsencesv1.ViewModels
 {
     class LoginViewModel : ObservableObject
     {
+        //Rappel sup info pour login 
         string _loginId = Db.Bdd.Users.Find(1).Mail;
         string _password = "1234";
         User _user = Db.Bdd.Users.Find(1);
@@ -65,6 +66,8 @@ namespace GestionDesAbsencesv1.ViewModels
                     MessageBoxImage.Error );
                 return;
             }
+
+            // a decommenter ////////////////////////////
 
             //MailLogin(user.First());
             //_user = user.First();
@@ -156,7 +159,7 @@ namespace GestionDesAbsencesv1.ViewModels
             else if(!IsNumber())
             {
                 return false;
-            }
+            } // a decommenter pour le login
             else if(_password != "1234")//Passwords.Decrypt(_user.Password))
             {
                 return false;

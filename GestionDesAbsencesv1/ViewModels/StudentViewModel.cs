@@ -186,7 +186,17 @@ namespace GestionDesAbsencesv1.ViewModels
 
         public void FilterDataDate()
         {
+            SetListAbsenceJustified();
+            SetListAbsenceNotJustified();
             _userAttendance = _user.Attendances
+                .Where(c => DateTime.Parse(c.Seance.Datetime) >= _dateStart)
+                .Where(x => DateTime.Parse(x.Seance.Datetime) <= _dateEnd)
+                .ToList();
+            AbsenceJustified = _absenceJustified
+                .Where(c => DateTime.Parse(c.Seance.Datetime) >= _dateStart)
+                .Where(x => DateTime.Parse(x.Seance.Datetime) <= _dateEnd)
+                .ToList();
+            AbsenceNotJustified = _absenceNotJustified
                 .Where(c => DateTime.Parse(c.Seance.Datetime) >= _dateStart)
                 .Where(x => DateTime.Parse(x.Seance.Datetime) <= _dateEnd)
                 .ToList();
@@ -196,10 +206,31 @@ namespace GestionDesAbsencesv1.ViewModels
             TxAbsent = GetAbsenteeismRate();
         }
 
-        public void GeneratePdf()
+        public void ExportPdf()
+        {
+            var dialog = new Microsoft.Win32.SaveFileDialog();
+            dialog.FileName = $"AbsenceDu{_dateStart.Day}.{_dateStart.Month}au{_dateEnd.Day}.{_dateEnd.Month}";
+            dialog.InitialDirectory = @"C:\Users";
+            dialog.DefaultExt = ".pdf";
+            dialog.Filter = "Pdf Files|*.pdf";
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                // Save document
+                GeneratePdf(dialog.FileName);
+            }
+        }
+
+        public void PrintPdf()
         {
             string outfile = Environment.CurrentDirectory + $"/AbsenceDu{_dateStart.Day}.{_dateStart.Month}au{_dateEnd.Day}.{_dateEnd.Month}.pdf";
+            GeneratePdf(outfile);
+            Process.Start(@"cmd.exe ", @"/c " + outfile);
+        }
 
+        public void GeneratePdf(string outfile)
+        {
             //Création du document
             Document doc = new();
             PdfWriter.GetInstance(doc, new FileStream(outfile, FileMode.Create));
@@ -312,9 +343,6 @@ namespace GestionDesAbsencesv1.ViewModels
             doc.Add(table2);
 
             doc.Close();
-            
-            Process.Start(@"cmd.exe ", @"/c " + outfile);
-            
         }
         
         static void AddCellToTab(string str, Font f, BaseColor c, PdfPTable t)
