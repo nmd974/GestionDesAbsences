@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GestionDesAbsencesv1.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="960" d:DesignWidth="1440"
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
@@ -24,16 +24,29 @@
         <StackPanel 
             DockPanel.Dock="Left" 
             Width="250" 
-            Height="800" 
+            HorizontalAlignment="Stretch"
             Background="#FF04153B">
-            <ListBox 
-                Height="800"
+            <ListBox
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
-                x:Name="ListButtonsHome" >
+                x:Name="ListButtonsHome" 
+                SelectionMode="Single" 
+                Height="700" >
                 <ListBox.ItemTemplate >
-                    <DataTemplate  >
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    
+                    <DataTemplate>
+                        <Button 
+                            Style="{StaticResource MaterialDesignFlatLightBgButton}"
+
+                            BorderBrush="#04153B"
+                            Command="{Binding Path=ChangePageFrame}" 
+                            Width="249" 
+                            Height="Auto"
+                            Padding="0,0,0,0"
+                            Background="#04153B">
+                            <StackPanel 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Center">
                             <materialDesign:PackIcon
                                 Width="35"
                                 Height="35"
@@ -47,14 +60,23 @@
                                 Margin="20,0,0,0"
                                 VerticalAlignment="Center"
                                 Content="{Binding Content}"/>
-                        </StackPanel>
+                            </StackPanel>
+                        </Button>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <Frame 
+
+        <Frame
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+            materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+            materialDesign:ScrollViewerAssist.CornerRectangleVisibility="Visible"
+            ScrollViewer.CanContentScroll="True"
+            NavigationUIVisibility="Hidden" 
             DockPanel.Dock="Right" 
             Name="homeFrame"
-            Source="component/HomeFrameStudent.xaml"/>
+            Source="component/HomeFrameStudent.xaml" />
+
     </DockPanel>
 </Page>

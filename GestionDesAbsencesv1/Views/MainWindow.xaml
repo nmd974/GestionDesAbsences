@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GestionDesAbsencesv1"
         xmlns:vm="clr-namespace:GestionDesAbsencesv1.Service"
         mc:Ignorable="d"
-        Title="Not Here v1.0.0" Height="1024" Width="1440"
+        Title="Not Here v1.0.0" Height="768" Width="1368"
         WindowState="Maximized"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,13 +18,14 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Frame 
+            HorizontalAlignment="Stretch"
             NavigationUIVisibility="Hidden" 
             x:Name="frame" 
-            VerticalAlignment="center"/>
+            VerticalAlignment="Stretch"/>
 
         <StackPanel 
             VerticalAlignment="Bottom" 
-            Height="64" 
+            Height="50" 
             Margin="0,20,0,0">
             <Label 
                 Content="Application Not Here V1.0.0 - Groupe 2" 

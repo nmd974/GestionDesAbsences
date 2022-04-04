@@ -28,5 +28,10 @@ namespace GestionDesAbsencesv1.Views
             BtnList = ListButtonsHome;
             HomeFrame = homeFrame;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
