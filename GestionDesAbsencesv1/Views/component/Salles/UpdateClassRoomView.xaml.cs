@@ -15,29 +15,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestionDesAbsencesv1.Views.component.Roles
+namespace GestionDesAbsencesv1.Views.component.Salles
 {
     /// <summary>
     /// Logique d'interaction pour UpdateRoleView.xaml
     /// </summary>
-    public partial class UpdateRoleView : Page
+    public partial class UpdateClassRoomView : Page
     {
-        readonly RoleViewModel db = Actions.ViewModel.Roles;
-        public Role role;
-        public UpdateRoleView()
+        readonly ClassroomViewModel db = Actions.ViewModel.Classroom;
+        public Classroom classroom;
+        public UpdateClassRoomView()
         {
             this.DataContext = db;
-            role = db.ListRoles.Where(c => c.RoleId == db.IdConcerned).First();
+            classroom = db.ListClassroom.Where(c => c.ClassroomId == db.IdConcerned).First();
             InitializeComponent();
-            RoleLabel.Text = role.Label;
-            TitleAction.Text = "Modification du libellé du rôle";
+            ClassRoomLabel.Text = classroom.Label;
+            TitleAction.Text = "Modification du nom de la salle";
         }
 
         private void UpdateRole(object sender, EventArgs e)
         {
-            role.Label = this.RoleLabel.Text;
+            classroom.Label = ClassRoomLabel.Text;
             db.Update();
-            LayoutHome.HomeFrame.Content = new ListRoleView();
+            LayoutHome.HomeFrame.Content = new ListClassRoomView();
         }
     }
 }

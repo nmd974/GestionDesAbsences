@@ -48,7 +48,6 @@ namespace GestionDesAbsencesv1.ViewModels
         public void Index()
         {
             ListRoles = Db.Bdd.Roles.ToList();
-            System.Diagnostics.Debug.WriteLine(ListRoles);
         }
 
         public void Store(string label)

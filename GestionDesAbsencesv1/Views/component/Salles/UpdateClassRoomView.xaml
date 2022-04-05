@@ -1,4 +1,4 @@
-﻿<Page x:Class="GestionDesAbsencesv1.Views.component.Roles.UpdateRoleView"
+﻿<Page x:Class="GestionDesAbsencesv1.Views.component.Salles.UpdateClassRoomView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -27,14 +27,13 @@
         <StackPanel Grid.Row="0"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <TextBlock Text="{Binding LabelConcerned}"
+            <TextBlock x:Name="TitleAction"
                        FontSize="25"
-                       x:Name="TitleAction"
                        Margin="25"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <TextBox x:Name="RoleLabel"
+            <TextBox x:Name="ClassRoomLabel"
                      Padding="25"
                      Margin="50"
                      materialDesign:HintAssist.Hint="Libellé">

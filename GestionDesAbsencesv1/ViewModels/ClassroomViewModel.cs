@@ -4,23 +4,32 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
-    class ClassroomViewModel
+    class ClassroomViewModel : INotifyPropertyChanged
     {
         readonly DbSet<Classroom> DBCLASSROOM = Db.Bdd.Classrooms;
-        ObservableCollection<Classroom> _listClassroom = new();
+        List<Classroom> _listClassroom = new();
+        public int IdConcerned = 0;
+        #region INotifyPropertyChanged Members  
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         public ClassroomViewModel()
         {
             Index();
         }
 
-        public ObservableCollection<Classroom> ListClassroom
+        public List<Classroom> ListClassroom
         {
             get
             {
@@ -29,15 +38,13 @@ namespace GestionDesAbsencesv1.ViewModels
             set
             {
                 _listClassroom = value;
+                OnPropertyChanged(nameof(ListClassroom));
             }
         }
 
-        void Index()
+        public void Index()
         {
-            foreach (Classroom Class in DBCLASSROOM)
-            {
-                _listClassroom.Add(Class);
-            }
+            ListClassroom = Db.Bdd.Classrooms.ToList();
         }
 
         public void Store(string label)
@@ -45,18 +52,21 @@ namespace GestionDesAbsencesv1.ViewModels
             Classroom NewClass = new() { Label = label };
 
             DBCLASSROOM.Add(NewClass);
+            ListClassroom.Add(NewClass);
             Db.Bdd.SaveChanges();
         }
 
         public void Update()
         {
-            _ = Db.Bdd.SaveChanges();
+            Db.Bdd.SaveChanges();
         }
 
         public void Delete(Classroom Class)
         {
+            var itemToRemove = ListClassroom.Single(r => r.ClassroomId == IdConcerned);
+            ListClassroom.Remove(itemToRemove);
             DBCLASSROOM.Remove(Class);
-            _ = Db.Bdd.SaveChanges();
+            Db.Bdd.SaveChanges();
         }
 
     }
