@@ -20,5 +20,20 @@ namespace GestionDesAbsencesv1.ViewModels
                 Page = new HomeFrameStudent()
             },
         };
+
+        static public List<Boutton> ListButtonAdmin = new List<Boutton>()
+        {
+            new Boutton()
+            {
+                Content = "Rôles",
+                Kind = "AccountKey",
+
+            },
+            new Boutton()
+            {
+                Content = "Etudiants",
+                Kind = "AccountMultiple"
+            }
+        };
     }
 }

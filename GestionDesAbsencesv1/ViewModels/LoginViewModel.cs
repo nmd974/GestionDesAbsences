@@ -2,6 +2,7 @@
 using GestionDesAbsencesv1.Service;
 using GestionDesAbsencesv1.Views;
 using GestionDesAbsencesv1.Views.component;
+using GestionDesAbsencesv1.Views.component.Roles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -191,8 +192,11 @@ namespace GestionDesAbsencesv1.ViewModels
         /// </summary>
         void NextViewAfterLogin()
         {
+            System.Diagnostics.Debug.WriteLine(_user.Role.Label.ToLower());
             switch (_user.Role.Label.ToLower())
             {
+                
+
                 case "étudiant":
                     Actions.ViewModel.Student.UserConnected = _user;
                     MainWindow.Frame.Content = new LayoutHome();
@@ -208,7 +212,10 @@ namespace GestionDesAbsencesv1.ViewModels
                     MainWindow.Frame.Content = new LayoutHome();
                     break;
                 case "admin":
+                    Actions.ViewModel.Student.UserConnected = _user;
                     MainWindow.Frame.Content = new LayoutHome();
+                    LayoutHome.BtnList.ItemsSource = ButtonsViewModel.ListButtonAdmin;
+                    LayoutHome.HomeFrame.Content = new ListRoleView();
                     break;
                 default:
                     MessageBox.Show(

@@ -5,23 +5,34 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GestionDesAbsencesv1.ViewModels
 {
-    class RoleViewModel
+    class RoleViewModel : INotifyPropertyChanged
     {
         readonly DbSet<Role> DBROLE = Db.Bdd.Roles;
-        ObservableCollection<Role> _listRoles = new();
+        List<Role> _listRoles = new();
+        public int IdConcerned = 0;
+
+        #region INotifyPropertyChanged Members  
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
 
         public RoleViewModel()
         {
             Index();
         }
 
-        public ObservableCollection<Role> ListRoles
+        public List<Role> ListRoles
         {
             get
             {
@@ -30,15 +41,14 @@ namespace GestionDesAbsencesv1.ViewModels
             set
             {
                 _listRoles = value;
+                OnPropertyChanged(nameof(ListRoles));
             }
         }
 
-        void Index()
+        public void Index()
         {
-            foreach(Role role in DBROLE)
-            {
-                _listRoles.Add(role);
-            }
+            ListRoles = Db.Bdd.Roles.ToList();
+            System.Diagnostics.Debug.WriteLine(ListRoles);
         }
 
         public void Store(string label)
@@ -46,6 +56,7 @@ namespace GestionDesAbsencesv1.ViewModels
             Role NewRole = new() { Label = label };
 
             DBROLE.Add(NewRole);
+            ListRoles.Add(NewRole);
             Db.Bdd.SaveChanges();
         }
 
@@ -56,8 +67,11 @@ namespace GestionDesAbsencesv1.ViewModels
 
         public void Delete(Role role)
         {
+            var itemToRemove = ListRoles.Single(r => r.RoleId == IdConcerned);
+            ListRoles.Remove(itemToRemove);
             DBROLE.Remove(role);
             Db.Bdd.SaveChanges();
         }
+
     }
 }
