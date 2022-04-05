@@ -251,7 +251,7 @@ namespace GestionDesAbsencesv1.ViewModels
             Font fontTh = new(iTextSharp.text.Font.FontFamily.HELVETICA, 14f, 1, white);
             Font fontSubTh = new(iTextSharp.text.Font.FontFamily.HELVETICA, 14f, 0, blue);
 
-            string logoPatch = @"C:\Users\boyer\source\repos\GestionDesAbsences\GestionDesAbsencesv1\Assets\logo.png";
+            string logoPatch = @"C:\Users\carol\source\repos\GestionDesAbsences\GestionDesAbsencesv1\Assets\logo.png";
             iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(logoPatch);
             jpg.Alignment = Element.ALIGN_CENTER;
             jpg.ScaleToFit(50f, 50f);

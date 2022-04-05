@@ -45,6 +45,21 @@ namespace GestionDesAbsencesv1.ViewModels
             }
         }
 
+        private Role selectedRole;
+
+        public Role SelectedRole
+        {
+            get
+            {
+                return selectedRole;
+            }
+            set
+            {
+                selectedRole = value;
+                OnPropertyChanged("SelectedRole");
+            }
+        }
+
         public void Index()
         {
             ListRoles = Db.Bdd.Roles.ToList();
